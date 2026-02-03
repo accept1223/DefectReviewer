@@ -1,0 +1,27 @@
+model_path: "deepseek"  # Model path or model name on HuggingFace. If you provide the model name, it will be automatically downloaded.
+use_lora: True
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  bias: "none"
+  task_type: "CAUSAL_LM"
+  target_modules: ["k_proj", "q_proj", "v_proj", "o_proj"]
+data_file: "data/data_v2.jsonl" # data path
+use_vulnerability_info: True  # Whether to include vulnerability information
+output_dir: "outputs/deepseek_finetune_v2" # base directory for outputs
+train_batch_size: 1
+eval_batch_size: 1
+grad_accum_steps: 4
+num_epochs: 5
+learning_rate: 2e-4
+fp16: true
+eval_steps: 500
+save_steps: 500
+logging_steps: 50
+save_total_limit: 2
+early_stop_patience: 2  # Stop training if no improvement
+metric_for_best_model: "bleu"
+greater_is_better: true
+dataloader_num_workers: 4
+report_to: tensorboard

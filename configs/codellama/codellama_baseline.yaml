@@ -1,0 +1,14 @@
+model_path: "codellama" # Model path or model name on HuggingFace. If you provide the model name, it will be automatically downloaded.
+data_file: "data/data_v3.jsonl"  # data path
+use_vulnerability_info: True  # Whether to include vulnerability information
+output_dir: "outputs/codellama_baseline_v" # base directory for outputs
+eval_batch_size: 1
+grad_accum_steps: 1
+fp16: true
+logging_steps: 50
+save_total_limit: 2
+early_stop_patience: 2  # Stop training if no improvement
+metric_for_best_model: "bleu"
+greater_is_better: true
+dataloader_num_workers: 4
+report_to: "none"
